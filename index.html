@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <title>Teddy AR</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/three.js/build/ar-threex-location-only.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
 
 <style>
-body { margin: 0; overflow: hidden; }
+body { margin:0; overflow:hidden; }
 </style>
 </head>
 
 <body>
 
-<a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+<a-scene
+  vr-mode-ui="enabled: false"
+  embedded
+  renderer="logarithmicDepthBuffer: true;"
+  arjs="sourceType: webcam; debugUIEnabled: false;"
+>
 
-  <!-- ここを marker なしにする -->
+  <!-- カメラから2m前に固定表示 -->
   <a-entity position="0 0 -2">
 
-    <!-- 背景 -->
+    <!-- 背景（小さめ） -->
     <a-plane
       src="background.png"
-      position="0 0 -0.5"
-      width="1"
-      height="0.7"
+      position="0 0 -0.3"
+      width="0.8"
+      height="0.5"
       material="transparent: true"
     ></a-plane>
 
-    <!-- 熊 -->
+    <!-- 熊（中央やや下） -->
     <a-image
       src="teddy.png"
       position="0 -0.3 0"
-      width="1"
-      height="1"
+      width="0.8"
+      height="0.8"
       material="transparent: true"
+      animation="property: position;
+                 dir: alternate;
+                 dur: 2000;
+                 loop: true;
+                 to: 0 -0.2 0"
     ></a-image>
 
   </a-entity>
 
-  <a-entity camera></a-entity>
+  <a-camera></a-camera>
 
 </a-scene>
 
