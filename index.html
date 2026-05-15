@@ -103,8 +103,9 @@ AFRAME.registerComponent('gesture-handler', {
     ></a-plane>
 
     <!-- 熊 -->
-    <a-image
-       id="randomBear"
+　　<a-image
+  　　 id="randomBear"
+ 　　  src="teddy.png"
       position="0 -0.3 0"
       width="0.8"
       height="0.8"
@@ -137,7 +138,7 @@ const randomImage =
 
 document
   .querySelector("#randomBear")
-  .setAttribute("src", randomImage);
+  .setAttribute("material", "src", randomImage);
 
 </script>
 </body>
